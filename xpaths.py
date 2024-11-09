@@ -1,0 +1,2 @@
+article_list_xpath = '//script[@data-fragment-type="article-list" and contains(text(), "PRELOADED_STATE_GRAPH")]/text()'
+article_json_xpath = "//script[@data-fragment-type='ArticleContent' and contains(text(), 'PRELOADED_STATE_GRAPH')]/text()"
