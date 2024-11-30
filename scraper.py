@@ -65,8 +65,9 @@ async def search_keyword(key_word, page_no, end_cursor=None):
 
     print("\n Articles len : \n", len(article_urls))
 
+    print(f"\nGathering articles for {key_word} {page_no}\n")
     for url in article_urls:
-        get_article_data(url, key_word, page_no)
+        get_article_data(url)
         # break
 
     if has_next_page and page_no != 2:
@@ -74,13 +75,11 @@ async def search_keyword(key_word, page_no, end_cursor=None):
         page_no += 1
         await search_keyword(key_word, page_no, end_cursor)
 
-def get_article_data(article_url, key_word, page_no):
+def get_article_data(article_url):
     """
     Collects artcle title, author, publish date, content etc.
     Cleans the data and saves it in article_data.json file.
     """
-
-    print(f"\nGathering articles for {key_word} {page_no}\n")
 
     response = requests.get(article_url, headers=artilce_page_headers)
     parser = html.fromstring(response.text)
